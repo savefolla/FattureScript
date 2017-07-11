@@ -17,6 +17,15 @@ function getCodIva(x) {
   }
 }
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 fs.readFile(filename, 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
@@ -55,17 +64,23 @@ fs.readFile(filename, 'utf8', function (err,data) {
       json: true,
       url: url.fatture
     };
-
-    request(options, function (err, res, body) {
-      if (err) {
-        console.error('error posting json: ', err)
-        throw err;
+    
+		request(options, function (err, res, body) {
+		  if (err) {
+		    console.error('error posting json: ', err)
+		    throw err;
+		  }
+      sleep(1000);
+      if(body.error_code === 2002){
+        var y = body.error.split(" ");
+        sleep(y[8]*1000);
+        console.log("dormo " + y[8]*1000);
       }
-      var headers = res.headers;
-      var statusCode = res.statusCode;
-      console.log('headers: ', headers);
-      console.log('statusCode: ', statusCode);
-      console.log('body: ', body);
-    });
+		  var headers = res.headers;
+		  var statusCode = res.statusCode;
+		  console.log('headers: ', headers);
+		  console.log('statusCode: ', statusCode);
+		  console.log('body: ', body);
+		});
   }
 });
