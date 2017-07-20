@@ -24,8 +24,11 @@ fs.readFile(filename, 'utf8', function (err,data) {
 
   var fatts = JSON.parse(csvToJson(data));
 
-  for(var i=0;i<fatts.length;i++){
-
+  var handle = function(fatts, i) {
+    if(i>=fatts.length){
+      console.log("Ho finito con successo");
+      return;
+    }
     var postData = {};
     postData.api_uid = api.UID;
     postData.api_key = api.key;
@@ -55,7 +58,7 @@ fs.readFile(filename, 'utf8', function (err,data) {
       json: true,
       url: url.fatture
     };
-    
+
     request(options, function (err, res, body) {
       if (err) {
         console.error('error posting json: ', err)
@@ -66,6 +69,12 @@ fs.readFile(filename, 'utf8', function (err,data) {
       console.log('headers: ', headers);
       console.log('statusCode: ', statusCode);
       console.log('body: ', body);
+      setTimeout(function() {
+        handle(fatts,i+1);
+      }, 2000);
     });
   }
+
+  handle(fatts,0);
+
 });
