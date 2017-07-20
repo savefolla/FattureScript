@@ -69,6 +69,7 @@ fs.readFile(filename, 'utf8', function (err,data) {
       console.log('headers: ', headers);
       console.log('statusCode: ', statusCode);
       console.log('body: ', body);
+      console.log('elaborata n:', postData.numero)
       setTimeout(function() {
         handle(fatts,i+1);
       }, 2000);
