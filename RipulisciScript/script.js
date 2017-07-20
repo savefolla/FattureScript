@@ -17,6 +17,11 @@ fs.readFile(filename, 'utf8', function (err,data) {
 
   for(var i=0;i<fatts.length;i++){
 
+    setTimeout(function() {
+      console.log("aspetto");
+    }, 2000);
+
+
     var postData = {};
     postData.api_uid = api.UID;
     postData.api_key = api.key;
