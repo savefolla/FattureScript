@@ -1,0 +1,23 @@
+{
+  "name": "fatturescript",
+  "version": "1.0.0",
+  "description": "Javascript script to load Ready Pro data in FattureInCloud",
+  "main": "script.js",
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savefolla/FattureScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savefolla/FattureScript/issues"
+  },
+  "homepage": "https://github.com/savefolla/FattureScript#readme"
+}
