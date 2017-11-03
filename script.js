@@ -36,6 +36,7 @@ fs.readFile(filename, 'utf8', function (err,data) {
     postData.numero = fatts[i].N; // Numero (e serie) del documento
     postData.data = fatts[i].Data;
     postData.lista_articoli = [];
+    postData.piva = fatts[i].PIVA;
     for(var j=0;j<fatts[i].Imponibile.length;j++){
       var articolo = {};
       articolo.nome = "Articoli " + fatts[i].Imponibile[j].cod;

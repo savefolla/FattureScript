@@ -40,7 +40,8 @@ module.exports = function csvJSON(csv){
 
     obj[headers[4]] = currentline[4];	
     obj[headers[6]] = currentline[6];
-    
+    obj[headers[7]] = currentline[7];
+
 	  result.push(obj);
 
   }
